@@ -8,12 +8,14 @@
 <ul>
   @foreach (PlacesInput item in Model)
   {
-    <li>@item.PlaceName</li>
-    <li>@item.LongT</li>
-    <li>@item.Lat</li>
-    <li>@item.Season</li>
+    <li>@item.PlaceName, @item.Id</li>
   }
 </ul>
+<form action="/places/{id}">
+  <label for="placeID">Search a place ID:</label>
+  <input id="placeID" name="placeID" type="text">
+  <button type="submit">Submit</button>
+</form>
 
 <a href="/places/new">Add a new item.</a>
 

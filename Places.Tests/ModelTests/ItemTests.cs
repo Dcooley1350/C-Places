@@ -16,6 +16,8 @@ namespace Places.Tests
         string longT;
         string lat;
         string season;
+        string journal;
+
         [TestInitialize]
         public void Setup()
         {
@@ -23,7 +25,8 @@ namespace Places.Tests
             longT = "12.5211";
             lat = "69.9683";
             season = "summer";
-            newPlaces = new PlacesInput(name,longT,lat,season);
+            journal = "This was AWESOME";
+            newPlaces = new PlacesInput(name,longT,lat,season,journal);
         }
         [TestCleanup]
         public void TearDown()
@@ -49,6 +52,13 @@ namespace Places.Tests
 
             List<PlacesInput> newList = new List<PlacesInput>{newPlaces};
            CollectionAssert.AreEqual(newList, result);
+        }
+
+        [TestMethod]
+        public void GetID_WeShouldBeAbleToGetTheID_Int()
+        {
+            int result = newPlaces.Id;
+            Assert.AreEqual(1, result);
         }
         
     }

@@ -20,9 +20,9 @@ namespace Places.Controllers
     }
 
     [HttpPost ("/places")]
-    public ActionResult Create(string place, string longt, string lat, string season)
+    public ActionResult Create(string place, string longt, string lat, string season, string journalEntry)
     {
-        PlacesInput newPlaces = new PlacesInput(place, longt, lat, season);
+        PlacesInput newPlaces = new PlacesInput(place, longt, lat, season, journalEntry);
         return RedirectToAction("Index");
     }
 
@@ -33,6 +33,13 @@ namespace Places.Controllers
         return View();
     }
 
+    [HttpGet ("/places/{id}")]
+    public ActionResult Show(string placeID)
+    {
+        int intID = int.Parse(placeID);
+        PlacesInput showPlace = PlacesInput.Show(intID);
+        return View(showPlace);
+    }
  } 
 
 }
