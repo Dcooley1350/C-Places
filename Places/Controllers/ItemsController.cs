@@ -36,9 +36,18 @@ namespace Places.Controllers
     [HttpGet ("/places/{id}")]
     public ActionResult Show(string placeID)
     {
+        
+        List<PlacesInput> checkList = PlacesInput.GetAll();
+        if(checkList.Count ==0)
+        {
+            return RedirectToAction("Index");
+        }
+        else
+        {
         int intID = int.Parse(placeID);
         PlacesInput showPlace = PlacesInput.Show(intID);
         return View(showPlace);
+        }
     }
  } 
 
