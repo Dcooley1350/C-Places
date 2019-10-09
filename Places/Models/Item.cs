@@ -25,5 +25,9 @@ namespace Places.Models
         {
             return _placesList;
         }
+        public static void ClearAll()
+        {
+            _placesList.Clear();
+        }
     }
 }
